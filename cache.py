@@ -22,8 +22,8 @@ class Cache:
         self.cache.append((address, value))
 
     # Search cache by address. Returns value if found or None if not
-    def search_cache(self):
+    def search_cache(self, address):
         for address in range(CACHE_SIZE):
-            if self.cache[i][0] == address:
-                return self.cache[i][1]
+            if self.cache[address][0] == address:
+                return self.cache[address][1]
         return None
