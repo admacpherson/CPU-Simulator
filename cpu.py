@@ -58,7 +58,6 @@ class CPU:
 
     def increment_cpu_counter(self):
         self.cpu_counter += 1
-        print("Incremented CPU counter by 1")
 
     def get_cpu_counter_value(self):
         return self.cpu_counter
@@ -100,16 +99,16 @@ class CPU:
 
     # Instruction Parsing
     def parse_instructions(self, instruction):
-        print("Instruction: " + str(instruction))
+        print("\nInstruction: " + str(instruction))
         self.increment_cpu_counter()
 
         parsed_instruction = instruction.split(",")
         command = parsed_instruction[0]
 
         if command == CACHE_INSTR_OPERATOR:
-            self.cache_instruction(parsed_instruction[1])
+            self.cache_instruction(int(parsed_instruction[1]))
         elif command == JUMP_INSTR_OPERATOR:
-            self.jump_instruction(parsed_instruction[1])
+            self.jump_instruction(int(parsed_instruction[1]))
         elif command == ADD_INSTR_OPERATOR:
             self.add_instruction(parsed_instruction[1], parsed_instruction[2], parsed_instruction[3])
         elif command == ADD_I_INSTR_OPERATOR:
