@@ -46,7 +46,7 @@ class CPU:
         self.cache.write_cache(address, value)
 
     def search_cache(self, address):
-        self.cache.search_cache(address)
+        return self.cache.search_cache(address)
 
     def set_cache_flag(self, value):
         self.cache_flag = value
@@ -54,9 +54,11 @@ class CPU:
     # CPU counter methods
     def reset_cpu_counter(self):
         self.cpu_counter = CPU_COUNTER_INIT_VALUE
+        print("CPU counter reset to " + str(CPU_COUNTER_INIT_VALUE))
 
     def increment_cpu_counter(self):
         self.cpu_counter += 1
+        print("Incremented CPU counter by 1")
 
     def get_cpu_counter_value(self):
         return self.cpu_counter
@@ -65,19 +67,23 @@ class CPU:
     def reset_registers(self):
         for i in range(len(self.registers)):
             self.registers[i] = 0
+        print("Reset registers")
 
     # Command methods
 
     def cache_instruction(self, value):
         if value == CACHE_OFF_VALUE:
             self.set_cache_flag(False)
+            print("Turned cache off")
         if value == CACHE_ON_VALUE:
             self.set_cache_flag(True)
+            print("Turned cache on")
         if value == CACHE_FLUSH_VALUE:
             self.flush_cache()
 
     def jump_instruction(self, target):
         self.cpu_counter = target
+        print("Jumped to " + str(target))
 
     def add_instruction(self, destination, source, target):
         destination = register_to_index(destination)
@@ -94,7 +100,7 @@ class CPU:
 
     # Instruction Parsing
     def parse_instructions(self, instruction):
-        print("Instruction: " + instruction)
+        print("Instruction: " + str(instruction))
         self.increment_cpu_counter()
 
         parsed_instruction = instruction.split(",")

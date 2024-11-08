@@ -16,14 +16,17 @@ class Cache:
     def flush_cache(self):
         for bit in range(CACHE_SIZE):
             self.cache.append(("", ""))
+        print("Cache flushed")
 
     # Write to cache by appending address/value tuple
     def write_cache(self, address, value):
         self.cache.append((address, value))
+        print("Wrote " + str(value) + " to cache at " + str(address))
 
     # Search cache by address. Returns value if found or None if not
     def search_cache(self, address):
         for address in range(CACHE_SIZE):
             if self.cache[address][0] == address:
+                print("Found " + str(self.cache[address][1]) + " at " + str(address))
                 return self.cache[address][1]
         return None
