@@ -11,3 +11,9 @@ class Memory:
     def init_memory_bus(self):
         for i in range(MEMORY_BUS_SIZE):
             self.memory_bus['{0:08b}'.format(i)] = 0
+
+    # Write a specified value to the memory bus at a specified address
+    def write_memory_bus(self, address, value):
+        # Check that address exists
+        if self.memory_bus.get(address) is not None:
+            self.memory_bus[address] = value
