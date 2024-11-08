@@ -17,3 +17,7 @@ class Memory:
         # Check that address exists
         if self.memory_bus.get(address) is not None:
             self.memory_bus[address] = value
+
+    # Search memory bus by address and return value
+    def search_memory_bus(self, address):
+        return self.memory_bus.get(address)
