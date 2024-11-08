@@ -83,6 +83,12 @@ class CPU:
 
         self.registers[destination] = source + target
 
+    def add_I_instruction(self, destination, source, immediate):
+        destination = register_to_index(destination)
+        source = register_to_index(source)
+
+        self.registers[destination] = source + immediate
+
     # Instruction Parsing
     def parse_instructions(self, instruction):
         print("Instruction: " + instruction)
@@ -97,3 +103,5 @@ class CPU:
             self.jump_instruction(parsed_instruction[1])
         if command == ADD_INSTR_OPERATOR:
             self.add_instruction(parsed_instruction[1], parsed_instruction[2], parsed_instruction[3])
+        if command == ADD_I_INSTR_OPERATOR:
+            self.add_I_instruction(parsed_instruction[1], parsed_instruction[2], parsed_instruction[3])
