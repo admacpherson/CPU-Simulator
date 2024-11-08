@@ -16,6 +16,9 @@ CACHE_FLUSH_VALUE = 2
 CPU_COUNTER_INIT_VALUE = 0
 NUM_REGISTERS = 9
 
+# Helper function which converts register position to integer
+def register_to_index(register):
+    return int(register[1:])
 
 class CPU:
     def __init__(self):
@@ -69,6 +72,17 @@ class CPU:
         for i in range(len(self.registers)):
             self.registers[i] = 0
 
+    # Command methods
+    def jump_instruction(self, target):
+        self.cpu_counter = target
+
+    def add_instruction(self, destination, source, target):
+        destination = register_to_index(destination)
+        source = register_to_index(source)
+        target = register_to_index(target)
+
+        self.registers[destination] = source + target
+
     # Instruction Parsing
     def parse_instructions(self, instruction):
         print("Instruction: " + instruction)
@@ -79,3 +93,7 @@ class CPU:
 
         if command == CACHE_INSTR_OPERATOR:
             self.cache_instruction(parsed_instruction[1])
+        if command == JUMP_INSTR_OPERATOR:
+            self.jump_instruction(parsed_instruction[1])
+        if command == ADD_INSTR_OPERATOR:
+            self.add_instruction(parsed_instruction[1], parsed_instruction[2], parsed_instruction[3])
