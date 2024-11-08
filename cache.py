@@ -1,7 +1,7 @@
 # Implements specialized container data types
 import collections
 
-# Set default cache size
+# Set  cache size
 CACHE_SIZE = 16
 
 
@@ -20,3 +20,10 @@ class Cache:
     # Write to cache by appending address/value tuple
     def write_cache(self, address, value):
         self.cache.append((address, value))
+
+    # Search cache by address. Returns value if found or None if not
+    def search_cache(self):
+        for address in range(CACHE_SIZE):
+            if self.cache[i][0] == address:
+                return self.cache[i][1]
+        return None
