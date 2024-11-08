@@ -16,3 +16,7 @@ class Cache:
     def flush_cache(self):
         for bit in range(CACHE_SIZE):
             self.cache.append(("", ""))
+
+    # Write to cache by appending address/value tuple
+    def write_cache(self, address, value):
+        self.cache.append((address, value))
