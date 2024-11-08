@@ -43,6 +43,17 @@ class CPU:
     def search_cache(self, address):
         self.cache.search_cache(address)
 
+    def set_cache_flag(self, value):
+        self.cache_flag = value
+
+    def set_cache_instruction(self, value):
+        if value == CACHE_OFF_VALUE:
+            self.set_cache_flag(False)
+        if value == CACHE_ON_VALUE:
+            self.set_cache_flag(True)
+        if value == CACHE_FLUSH_VALUE:
+            self.flush_cache()
+
     # CPU counter methods
     def reset_cpu_counter(self):
         self.cpu_counter = CPU_COUNTER_INIT_VALUE
