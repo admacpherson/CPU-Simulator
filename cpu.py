@@ -46,7 +46,7 @@ class CPU:
     def set_cache_flag(self, value):
         self.cache_flag = value
 
-    def set_cache_instruction(self, value):
+    def cache_instruction(self, value):
         if value == CACHE_OFF_VALUE:
             self.set_cache_flag(False)
         if value == CACHE_ON_VALUE:
@@ -68,3 +68,14 @@ class CPU:
     def reset_registers(self):
         for i in range(len(self.registers)):
             self.registers[i] = 0
+
+    # Instruction Parsing
+    def parse_instructions(self, instruction):
+        print("Instruction: " + instruction)
+        self.increment_cpu_counter()
+
+        parsed_instruction = instruction.split(",")
+        command = parsed_instruction[0]
+
+        if command == CACHE_INSTR_OPERATOR:
+            self.cache_instruction(parsed_instruction[1])
