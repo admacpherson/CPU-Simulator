@@ -108,9 +108,11 @@ class CPU:
 
         if command == CACHE_INSTR_OPERATOR:
             self.cache_instruction(parsed_instruction[1])
-        if command == JUMP_INSTR_OPERATOR:
+        elif command == JUMP_INSTR_OPERATOR:
             self.jump_instruction(parsed_instruction[1])
-        if command == ADD_INSTR_OPERATOR:
+        elif command == ADD_INSTR_OPERATOR:
             self.add_instruction(parsed_instruction[1], parsed_instruction[2], parsed_instruction[3])
-        if command == ADD_I_INSTR_OPERATOR:
+        elif command == ADD_I_INSTR_OPERATOR:
             self.add_i_instruction(parsed_instruction[1], parsed_instruction[2], parsed_instruction[3])
+        else:
+            print("Command not recognized")
