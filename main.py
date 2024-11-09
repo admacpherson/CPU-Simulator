@@ -36,8 +36,15 @@ def read_strip_data(filepath):
     return data
 
 
-data_input = read_strip_data(DATA_INPUT_FILE)
 instructions_input = read_strip_data(INSTRUCTION_INPUT_FILE)
+
+
+def initialize_memory_bus(cpu):
+    data_input = read_strip_data(DATA_INPUT_FILE)
+    for data in data_input:
+        data_parsed = data.split(",")
+        address, value = data_parsed[0], data_parsed[1]
+        cpu.write_memory_bus(address, value)
 
 # Run CPU Simulator
 print("------------------------")
