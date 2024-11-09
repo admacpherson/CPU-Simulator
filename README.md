@@ -25,4 +25,4 @@ Python program to simulate CPU functionalities using OOP structure.
 ## References
 Code is based on <a href="https://codecadmy.com">Codecademy's</a> <a href="https://github.com/Codecademy/computer-architecture/tree/main/portfolio-project-cpu-simulator">CPU Simulator Portfolio Project</a>.<br>
 
-Thanks to Dr. Timothy Heil for his computer architecture knowledge
+Thanks to Dr. Timothy Heil for his computer architecture knowledge.
