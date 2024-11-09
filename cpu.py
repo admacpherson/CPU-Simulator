@@ -3,9 +3,10 @@ from memory import Memory
 
 # Instruction operators
 ADD_INSTR_OPERATOR = "ADD"
-ADD_I_INSTR_OPERATOR = "ADD1"
+ADD_I_INSTR_OPERATOR = "ADDI"
 JUMP_INSTR_OPERATOR = "JMP"
 CACHE_INSTR_OPERATOR = "CACHE"
+HALT_INSTR_OPERATOR = "HALT"
 
 # Cache status values
 CACHE_OFF_VALUE = 0
@@ -95,7 +96,7 @@ class CPU:
         destination = register_to_index(destination)
         source = register_to_index(source)
 
-        self.registers[destination] = source + immediate
+        self.registers[destination] = source + int(immediate)
 
     # Instruction Parsing
     def parse_instructions(self, instruction):
@@ -113,5 +114,8 @@ class CPU:
             self.add_instruction(parsed_instruction[1], parsed_instruction[2], parsed_instruction[3])
         elif command == ADD_I_INSTR_OPERATOR:
             self.add_i_instruction(parsed_instruction[1], parsed_instruction[2], parsed_instruction[3])
+        elif command == HALT_INSTR_OPERATOR:
+            print("CPU Halting...")
+            return
         else:
             print("Command not recognized")
