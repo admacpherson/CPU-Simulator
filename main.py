@@ -54,18 +54,17 @@ def send_cpu_instructions(cpu):
 print("------------------------")
 print("      CPU Simulator     ")
 print("------------------------")
-print("")
-print("Instantiating CPU...")
-cpu = CPU()
-print("\nSending instructions to CPU...")
 
-cpu.parse_instructions("CACHE, 0")
-cpu.parse_instructions("CACHE, 1")
-cpu.parse_instructions("CACHE, 2")
+print("\nInstantiating CPU...")
+cpu = CPU()
+
+print("\nInitializing memory bus...")
+initialize_memory_bus(cpu)
+
+print("\nSending instructions to CPU...\n")
 
 print("CPU Counter:" + str(cpu.get_cpu_counter_value()))
-cpu.parse_instructions("JMP, 1")
+cpu.parse_instructions("JMP, 4")
 print("CPU Counter: " + str(cpu.get_cpu_counter_value()))
 
-initialize_memory_bus(cpu)
 send_cpu_instructions(cpu)
